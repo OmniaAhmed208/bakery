@@ -7,6 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="d-flex justify-content-end">
+                <a href="{{route('admin.reservations.create')}}" class="btn btn-primary m-4">Create Reservation</a>
+            </div>
             <table class="table table-striped">
                 <thead>
                   <tr>

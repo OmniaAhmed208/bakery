@@ -7,33 +7,38 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="d-flex justify-content-end">
+                <a href="{{route('admin.tables.create')}}" class="btn btn-primary m-4">Create tables</a>
+            </div>
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Guest number</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Location</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                    @foreach($tables as $table)
+                        <tr>
+                            <td>{{$table->name}}</td>
+                            <td>{{$table->guest_number}}</td>
+                            <td>{{$table->status}}</td>
+                            <td>{{$table->location}}</td>
+                            <td>
+                                <div class="d-flex space-x-2">
+                                    <a href="{{route('admin.tables.edit', $table->id)}}" class="btn btn-primary">Edit</a>
+                                    <form method="POST" action="{{route('admin.tables.destroy', $table->id)}}"
+                                        onsubmit="return confirm('Are you sure?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach    
                 </tbody>
               </table>
         </div>

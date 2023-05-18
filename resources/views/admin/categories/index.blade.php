@@ -7,33 +7,37 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <table class="table table-striped">
+            <div class="d-flex justify-content-end">
+                <a href="{{route('admin.categories.create')}}" class="btn btn-primary m-4">Create Ctegory</a>
+            </div>
+            <table class="table table-striped border-top">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                    @foreach ($categories as $category)
+                        <tr>
+                            <td class="py-2 px-6 fs-5">{{$category->name}}</td>
+                            <td class="py-2 px-6 w-25"><img src="{{Storage::url($category->image)}}" class="rounded" alt="category"></td>
+                            <td class="py-2 px-6 fs-5">{{$category->description}}</td>
+                            <td class="py-2 px-6">
+                                <div class="d-flex space-x-2">
+                                    <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-primary">Edit</a>
+                                    <form method="POST" action="{{route('admin.categories.destroy', $category->id)}}"
+                                        onsubmit="return confirm('Are you sure?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
               </table>
         </div>

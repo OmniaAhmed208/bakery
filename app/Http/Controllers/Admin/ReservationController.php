@@ -15,9 +15,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservation = Reservation::all();
+        $reservations = Reservation::all();
         return view('admin.reservation.index',[
-            'reservation' => $reservation
+            'reservations' => $reservations
         ]);
     }
 
@@ -28,7 +28,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.reservation.create');
     }
 
     /**

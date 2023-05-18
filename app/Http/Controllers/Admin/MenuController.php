@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuStoreRequest;
+use Storage;
+use Illuminate\Validation\Rule;
 
 class MenuController extends Controller
 {
@@ -28,7 +32,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.menus.create', compact('categories'));
     }
 
     /**
@@ -37,9 +42,25 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuStoreRequest $request)
     {
-        //
+        $image = $request->file('image')->store('public/menus');
+
+        $menu = Menu::create([
+            'name'=> $request->name,
+            'image'=> $image,
+            'description'=> $request->description,
+            'price' => $request->price,
+            'time' => $request->time,
+            'weight' => $request->weight,
+            'temprature' => $request->temprature,
+        ]);
+
+        if($request->has('categories')){
+            $menu->categories()->attach($request->categories);
+        }
+
+        return to_route('admin.menus.index');
     }
 
     /**
@@ -59,9 +80,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Menu $menu)
     {
-        //
+        $categories = Category::all();
+        return view('admin.menus.edit', compact('menu', 'categories'));
     }
 
     /**
@@ -71,9 +93,39 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Menu $menu)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'time' => 'required',
+            'weight' => 'required',
+            'temprature' => 'required',
+            'description' => 'required'
+        ]);
+        $image =  $menu->image;
+
+        if($request->hasFile('image')){
+            Storage::delete($menu->image);
+            $image = $request->file('image')->store('public/menus');
+        }
+
+        $menu->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $image,
+            'price' => $request->price,
+            'weight' => $request->weight,
+            'time' => $request->time,
+            'temprature' => $request->temprature
+        ]);
+
+        if($request->has('categories')){
+            $menu->categories()->sync($request->categories);
+        }
+
+        return to_route('admin.menus.index');
+
     }
 
     /**
@@ -82,8 +134,11 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+        Storage::delete($menu->image);
+        $menu->delete();
+
+        return to_route('admin.menus.index');
     }
 }
