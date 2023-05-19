@@ -18,6 +18,9 @@
                         <label for="name" class="form-label">Name</label>
                         <input class="form-control" type="text" id="name" name="name" value="{{$menu->name}}">
                     </div>
+                    @error('name')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
                         <div>
@@ -25,21 +28,27 @@
                         </div>
                         <input class="form-control" type="file" id="image" name="image">
                     </div>
+                    @error('image')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="price" class="form-label">Price ($)</label>
                         <input class="form-control" type="text" id="price" name="price" value="{{$menu->price}}">
                     </div>
+                    @error('price')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="weight" class="form-label">Weight (g)</label>
-                        <input class="form-control" type="text" id="weight" name="weight" value="{{$menu->weight}}">
+                        <input class="form-control @error('weight') is-invalid @enderror" type="text" id="weight" name="weight" value="{{$menu->weight}}">
                     </div>
                     <div class="mb-3">
                         <label for="time" class="form-label">Time (min)</label>
-                        <input class="form-control" type="text" id="time" name="time" value="{{$menu->time}}">
+                        <input class="form-control @error('time') is-invalid @enderror" type="text" id="time" name="time" value="{{$menu->time}}">
                     </div>
                     <div class="mb-3">
                         <label for="temprature" class="form-label">Temprature (&#8451)</label>
-                        <input class="form-control" type="text" id="temprature" name="temprature" value="{{$menu->temprature}}">
+                        <input class="form-control @error('temprature') is-invalid @enderror" type="text" id="temprature" name="temprature" value="{{$menu->temprature}}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>

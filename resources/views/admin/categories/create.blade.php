@@ -15,19 +15,28 @@
                 <div class="m-4 p-2">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input class="form-control" type="text" id="name" name="name" placeholder="name">
+                        <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="name">
                     </div>
+                    @error('name')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input class="form-control" type="file" id="image" name="image">
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
                     </div>
+                    @error('image')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3"></textarea>
                     </div>
+                    @error('description')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="d-flex m-4">
-                    <button type="submit" class="px-4 btn btn-primary">Submit</button>
+                    <button type="submit" class="px-4 btn btn-primary">Store</button>
                 </div>
             </form>
         </div>

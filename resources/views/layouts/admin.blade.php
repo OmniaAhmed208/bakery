@@ -70,6 +70,23 @@
                     </nav>
             </div>
             <main class="m-2 p-8 w-full">
+                <div>
+                    @if (session()->has('danger'))
+                        <div class="mb-3 alert alert-danger">
+                            <span>Danger alert! </span> {{ session()->get('danger') }}
+                        </div>
+                    @endif
+                    @if (session()->has('success'))
+                    <div class="mb-3 alert alert-success">
+                        <span>Success alert! </span> {{ session()->get('success') }}
+                    </div>
+                    @endif
+                    @if (session()->has('warning'))
+                        <div class="mb-3 alert alert-warning">
+                            <span>Warning alert! </span> {{ session()->get('warning') }}
+                        </div>
+                    @endif
+                </div>
                 {{$slot}}
             </main>
         </div>

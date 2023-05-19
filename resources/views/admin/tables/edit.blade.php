@@ -18,10 +18,16 @@
                         <label for="name" class="form-label">Name</label>
                         <input class="form-control" type="text" id="name" name="name" value="{{$table->name}}">
                     </div>
+                    @error('name')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="guest_number" class="form-label">Geust number</label>
                         <input class="form-control" type="number" id="guest_number" name="guest_number" value="{{$table->guest_number}}">
                     </div>
+                    @error('guest_number')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select id="status" name="status" class="w-100 rounded">
@@ -30,6 +36,9 @@
                             <option value="unavailable" @selected($table->status == 'unavailable')>unavailable</option>
                         </select>
                     </div>
+                    @error('status')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
                         <select id="location" name="location" class="w-100 rounded">
@@ -40,6 +49,9 @@
                             {{-- @endforeach --}}
                         </select>
                     </div>
+                    @error('location')
+                        <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="d-flex m-4 mb-0">
                     <button type="submit" class="px-4 btn btn-primary">Store</button>

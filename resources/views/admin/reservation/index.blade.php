@@ -13,30 +13,35 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Table</th>
+                    <th scope="col">Guests</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  @foreach ($reservations as $reservation)
+                    <tr>
+                        <td>{{$reservation->fname}} {{$reservation->lname}}</td>
+                        <td>{{$reservation->email}}</td>
+                        <td>{{$reservation->res_date}}</td>
+                        <td>{{$reservation->table_id}}</td>
+                        {{-- <td>{{$reservation->table->name}}</td> --}}
+                        <td>{{$reservation->guest_number}}</td>
+                        <td>
+                            <div class="d-flex space-x-2">
+                                <a href="{{route('admin.reservations.edit', $reservation->id)}}" class="btn btn-primary">Edit</a>
+                                <form method="POST" action="{{route('admin.reservations.destroy', $reservation->id)}}"
+                                    onsubmit="return confirm('Are you sure?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
         </div>
