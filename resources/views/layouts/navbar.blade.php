@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a class="navbar-brand d-flex justify-content-center align-items-center" href="{{ route('dashboard') }}">
-                        <img src="img/logo3.png" class="img-fluid icon" alt=""> <span class="mx-4">Crustique</span>
+                        <img src="{{Storage::url('img/logo3.png')}}" class="img-fluid icon" alt=""> <span class="mx-4">Crustique</span>
+                        {{-- <img src="img/logo3.png" class="img-fluid icon" alt=""> <span class="mx-4">Crustique</span> --}}
                     </a>
                 </div>
             </div>
@@ -20,7 +21,7 @@
                               <a class="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">About Us</a>
+                              <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="{{ route('menus.index') }}">Our Menu</a>

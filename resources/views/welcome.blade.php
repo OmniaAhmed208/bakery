@@ -30,7 +30,7 @@
 
                             <div class="d-flex justify-content-end mt-5">
                                 <div class="btn">
-                                    <button class="btn">Buy Now</button>
+                                    <a href="{{ route('reservations.step.one') }}" class="btn">Buy Now</a>
                                 </div>
                             </div>
                             <div class="imgBoxIcon position-absolute">
@@ -55,7 +55,45 @@
 
       <!-- ======================== bread menu ================== -->
       <!-- =========== slider Large screen ============= -->
-      <div class="container">
+        <div class="container specials">
+            <h2 class="h1 text-center fw-bold">Today's Speciality</h2>
+            <p class="smallTitle fw-bold text-center">from our menu</p>
+            <div class="bread-menu d-flex justify-content-center">
+                @foreach ($specials->menus as $menu)
+                    <div class="content">
+                        <div class="imgBox">
+                            <img src="img/sweetDinnerRolls.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="title">
+                            <h3 class="mt-4">{{$menu->name}}</h3>
+                            <p class="smallTitle fw-bold">boutiqe bread</p>
+                            <p class="fw-bold fs-5 price">$ {{$menu->price}}</p>
+                        </div>
+                        <hr class="text-black-50 m-4">
+                        <div class="features d-flex">
+                            <div>
+                            <i class="fa-solid fa-weight-scale fa-fw"></i>
+                            <span>{{$menu->weight}} g</span>
+                            </div>
+                            <div>
+                            <i class="fa-solid fa-clock fa-fw"></i>
+                            <span>{{$menu->time}} min</span>
+                            </div>
+                            <div>
+                            <i class="fa-solid fa-temperature-three-quarters fa-fw"></i>
+                            <span class="degree">{{$menu->temprature}} &#8451</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <div class="btn">
+                                <button class="btn text-black">Buy Now</button>
+                            </div>
+                        </div>
+                    </div> 
+                @endforeach   
+            </div>
+        </div>
+      {{-- <div class="container">
         <div id="carouselExampleControls" class="carousel slide d-none d-sm-block" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -377,7 +415,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- ===================== bread recipes ============= -->
       <section class="bread-recipes">
         <h2 class="h1 text-center">Bread Recipes</h2>

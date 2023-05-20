@@ -18,18 +18,19 @@
                     <th scope="col">Date</th>
                     <th scope="col">Table</th>
                     <th scope="col">Guests</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($reservations as $reservation)
                     <tr>
-                        <td>{{$reservation->fname}} {{$reservation->lname}}</td>
-                        <td>{{$reservation->email}}</td>
-                        <td>{{$reservation->res_date}}</td>
-                        <td>{{$reservation->table_id}}</td>
+                        <td class="py-4 px-6">{{$reservation->fname}} {{$reservation->lname}}</td>
+                        <td class="py-4 px-6">{{$reservation->email}}</td>
+                        <td class="py-4 px-6">{{$reservation->res_date}}</td>
+                        <td class="py-4 px-6">{{$reservation->table_id}}</td>
                         {{-- <td>{{$reservation->table->name}}</td> --}}
-                        <td>{{$reservation->guest_number}}</td>
-                        <td>
+                        <td class="py-4 px-6">{{$reservation->guest_number}}</td>
+                        <td class="py-4 px-6">
                             <div class="d-flex space-x-2">
                                 <a href="{{route('admin.reservations.edit', $reservation->id)}}" class="btn btn-primary">Edit</a>
                                 <form method="POST" action="{{route('admin.reservations.destroy', $reservation->id)}}"

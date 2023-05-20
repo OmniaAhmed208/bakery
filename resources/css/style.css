@@ -83,8 +83,9 @@ nav .navbar-list li a:hover{
 .intro .content :is(span,svg){opacity: 0.8;}
 .intro .degree::after{content: "\00b0 C"}
 
-:is(.intro, .bread-menu, .bread-recipes) .btn{padding: 3px;}
-:is(.intro, .bread-menu, .bread-recipes) .btn button{
+:is(.intro, .bread-menu, .category, .bread-recipes) .btn{padding: 3px;}
+:is(.intro, .bread-menu, .category, .bread-recipes) .btn button,
+:is(.intro, .bread-menu, .category, .bread-recipes) .btn a{
     outline: none;
     background: transparent;
     padding: 4px 40px;
@@ -92,11 +93,12 @@ nav .navbar-list li a:hover{
     color: var(--yellow-color);
     transition: all .3s ease-in-out;
 }
-.intro .btn button:hover{
+.intro .btn button:hover,
+.intro .btn a:hover{
     color: #fff;
     background: var(--yellow-color);
 }
-:is(.intro, .bread-menu, .bread-recipes) :is(.btn, .btn button){border: 1px solid var(--yellow-color);}
+:is(.intro, .bread-menu, .category, .bread-recipes) :is(.btn, .btn button){border: 1px solid var(--yellow-color);}
 
 .intro .imgBoxIcon{
     position: absolute;
@@ -106,16 +108,16 @@ nav .navbar-list li a:hover{
 /* =============== about ============ */
 .about{margin: 70px 0;}
 .about .smallTitle{color: var(--yellow-color);margin-top: -10px;}
-.about .desc{width: 55%;}
+.about .desc{width: 60%;}
 
 /* =========== bread menu ============*/
-.bread-menu .imgBox{border: 10px solid;height: 360px;}
-.bread-menu .imgBox img{width: 100%;height: 100% !important;}
-.bread-menu .smallTitle{color: var(--yellow-color);margin-top: -10px;}
-.bread-menu h3{font-size: 25px;}
-.bread-menu .features{place-content: space-evenly;}
-.bread-menu .title{text-align: center; font-size: 16px;height:60px}
-.bread-menu .features :is(svg, span){font-size: 14px;}
+:is(.bread-menu,.category) .imgBox{border: 10px solid;height: 360px;}
+:is(.bread-menu,.category) .imgBox img{width: 100%;height: 100% !important;}
+:is(.bread-menu,.category, .specials) .smallTitle{color: var(--yellow-color);margin-top: -10px;}
+:is(.bread-menu,.category) h3{font-size: 25px;}
+:is(.bread-menu,.category) .features{place-content: space-evenly;}
+:is(.bread-menu,.category) .title{text-align: center; font-size: 16px;height:60px}
+:is(.bread-menu,.category) .features :is(svg, span){font-size: 14px;}
 
 @media screen and (min-width: 576px) {
     .bread-menu .content{margin: 0.5em; width: calc(100%/3);}
@@ -138,6 +140,24 @@ nav .navbar-list li a:hover{
 }
 .prevBtn{left: 0;float: left;}
 .nextBtn{right: 0;float: right;}
+
+.specials .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
+.specials .title{height: 85px;}
+
+/* ============= category ============== */
+.category a{text-decoration: none;color: #000;}
+.category h1{font-size: 50px;}
+#menus .title{height: 85px;}
+.category .title img{width: 106px;height: 100px;margin: -17px 12px;}
+#category .imgBox{border: 0 solid;height: 280px;}
+#category .content{box-shadow: 0 1px 3px #868686}
+.category .btn button{padding: 4px 20px;font-size: 16px;}
+.category .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
+
+/* ================= reservation ============ */
+.reservation .imgBox{height: 600px;}
+.reservation .imgBox img{height: 100%;width: 100%;}
+/* .reservation form{height: 600px;background: #00000035;} */
 
 /* =============== bread-recipes ================ */
 .bread-recipes{margin: 70px 0;}
