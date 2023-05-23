@@ -26,8 +26,12 @@
                             <li class="nav-item">
                               <a class="nav-link" href="{{ route('menus.index') }}">Our Menu</a>
                             </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('reservations.step.one') }}">Make Order</a>
+                            {{-- <li class="nav-item">
+                                // ===> for reservation a table in restaurant
+                                <a class="nav-link" href="{{ route('reservations.step.one') }}">Make Order</a>
+                            </li> --}}
+                            <li>
+                                <a class="nav-link fs-5" href="{{ route('reservations.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             </li>
                         </ul>
                     </x-slot>
@@ -57,16 +61,16 @@
             <div class="mt-3 space-y-1">
                 <ul class="navbar-list me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link rounded active" aria-current="page" href="#">Home</a>
+                      <a class="nav-link rounded active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link rounded" href="#">About Us</a>
+                      <a class="nav-link rounded" href="{{ route('categories.index') }}">Categories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link rounded" href="#">Our Menu</a>
+                      <a class="nav-link rounded" href="{{ route('menus.index') }}">Our Menu</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link rounded">Make Order</a>
+                    <li  class="nav-item">
+                        <a class="nav-link rounded fs-5" href="{{ route('reservations.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
                 </ul>
             </div>

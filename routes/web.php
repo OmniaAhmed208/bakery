@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
+use App\Http\Controllers\Frontend\OrderController as FrontendOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,22 +25,30 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
+
 Route::get('/reservation/step-one', [FrontendReservationController::class, 'stepOne'])->name('reservations.step.one');
 Route::post('/reservation/step-one', [FrontendReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
 Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
 Route::post('/reservation/step-two', [FrontendReservationController::class, 'StoreStepTwo'])->name('reservations.store.step.two');
-Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/add-to-cart', [FrontendReservationController::class, 'addToCart'])->name('reservations.addToCart');
+    Route::POST('/add-menu-to-cart', [FrontendReservationController::class, 'addMenuToCart'])->name('reservations.addMenuToCart');
+    Route::delete('/delete-cart-item/{id}', [FrontendOrderController::class, 'deleteCartItem'])->name('reservations.deleteCartItem');
+
+    Route::get('/user-information', [FrontendReservationController::class, 'userInformation'])->name('reservations.Information');
+    Route::get('/checkout', [FrontendReservationController::class, 'checkout'])->name('reservations.checkout');
+    Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
 });
+
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class, 'index'])->name('index');

@@ -34,11 +34,16 @@
                                 <span class="degree">{{$menu->temprature}} &#8451</span>
                             </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-center mt-4">
+                            <form action="{{route('reservations.addMenuToCart')}}" method="POST" class="text-center">
+                                @csrf
+                                <input type="hidden" value="{{$menu->id}}" name="menu_id">
+                                <input type="hidden" value="{{$menu->price}}" name="price">
+                                <input type="hidden" value="1" name="quantity">
+                                <br>
                                 <div class="btn">
-                                    <button class="btn text-black">Buy Now</button>
+                                    <button type="submit" class="btn text-black">Buy Now</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 @endforeach

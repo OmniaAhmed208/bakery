@@ -143,16 +143,26 @@ nav .navbar-list li a:hover{
 
 .specials .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
 .specials .title{height: 85px;}
+.bread-menu .quantity{
+    border-radius: 8px;
+    width: 55px;
+    padding: 0 9px;
+    outline: 0;
+    height: 30px;
+    margin: 20px;
+}
 
-/* ============= category ============== */
-.category a{text-decoration: none;color: #000;}
-.category h1{font-size: 50px;}
+/* ============= category , cart============== */
+:is(.category, .cart) a{text-decoration: none;color: #000;}
+:is(.category, .cart) h1{font-size: 50px;}
 #menus .title{height: 85px;}
 .category .title img{width: 106px;height: 100px;margin: -17px 12px;}
 #category .imgBox{border: 0 solid;height: 280px;}
 #category .content{box-shadow: 0 1px 3px #868686}
 .category .btn button{padding: 4px 20px;font-size: 16px;}
 .category .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
+.cart h1 svg {color: var(--yellow-color);}
+.cart h1 svg{filter: drop-shadow(0px 0px 1px #000);}
 
 /* ================= reservation ============ */
 .reservation .imgBox{height: 600px;}
