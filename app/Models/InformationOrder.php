@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class InformationOrder extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_id', 'phone_number', 'address', 'street'];
 }

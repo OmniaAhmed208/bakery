@@ -24,13 +24,16 @@ h1, h2, h3{font-family: 'Courgette', cursive;}
 /* ============ navbar =============== */
 
 nav{box-shadow: 0 0 2px #ddd;height: 70px;}
-nav .navbar-brand{
+nav .navbar-brand, .adminLogo{
     padding: 6px 22px;
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
     font-size: 30px;
     color: #202529;
 }
+.adminLogo{font-size: 25px;display: flex;padding: 10px 0;}
+.adminLogo span{margin: 15px 5px;}
+
 nav .navbar-toggler {font-size: 25px;}
 nav .navbar-toggler:focus {box-shadow: none;}
 nav :is(.navbar-nav, .navbar-list) li a{margin-right: 20px; font-weight: bold;}
@@ -143,7 +146,7 @@ nav .navbar-list li a:hover{
 
 .specials .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
 .specials .title{height: 85px;}
-.bread-menu .quantity{
+:is(.bread-menu, .cart, .category) .quantity{
     border-radius: 8px;
     width: 55px;
     padding: 0 9px;
@@ -157,12 +160,15 @@ nav .navbar-list li a:hover{
 :is(.category, .cart) h1{font-size: 50px;}
 #menus .title{height: 85px;}
 .category .title img{width: 106px;height: 100px;margin: -17px 12px;}
+.checkout .title img{width: 106px;height: 100px;margin: -17px 12px;}
 #category .imgBox{border: 0 solid;height: 280px;}
 #category .content{box-shadow: 0 1px 3px #868686}
 .category .btn button{padding: 4px 20px;font-size: 16px;}
 .category .price{filter: drop-shadow(0px 0px 1px var(--yellow-color));}
-.cart h1 svg {color: var(--yellow-color);}
-.cart h1 svg{filter: drop-shadow(0px 0px 1px #000);}
+:is(.cart h1, .checkout .content, .info) svg {color: var(--yellow-color);filter: drop-shadow(0px 0px 1px #000);}
+
+:is(.info, .checkout) .title img{width:63px;height: 64px;margin: -10px 4px;}
+/* .okBtn{display: none;} */
 
 /* ================= reservation ============ */
 .reservation .imgBox{height: 600px;}

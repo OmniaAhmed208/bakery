@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->decimal('price', 10, 2);
+            $table->integer('quantity');
+            $table->string('quantity_type');
             $table->integer('weight')->default(false);
             $table->integer('time')->default(false);
             $table->integer('temprature')->default(false);

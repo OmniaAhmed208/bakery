@@ -23,7 +23,7 @@
                     @foreach ($categories as $category)
                         <tr>
                             <td class="py-2 px-6 fs-5">{{$category->name}}</td>
-                            <td class="py-2 px-6 w-25"><img src="{{Storage::url($category->image)}}" class="rounded" alt="category"></td>
+                            <td class="py-2 px-6 w-20"><img src="{{Storage::url($category->image)}}" class="rounded" alt="category"></td>
                             <td class="py-2 px-6 fs-5">{{$category->description}}</td>
                             <td class="py-2 px-6">
                                 <div class="d-flex space-x-2">

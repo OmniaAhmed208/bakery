@@ -51,6 +51,8 @@ class MenuController extends Controller
             'image'=> $image,
             'description'=> $request->description,
             'price' => $request->price,
+            'quantity' => $request->quantity,
+            'quantity_type' => $request->quantity_type,
             'time' => $request->time,
             'weight' => $request->weight,
             'temprature' => $request->temprature,
@@ -98,6 +100,8 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'quantity' => 'required',
+            'quantity_type' => 'required',
             'time' => 'required',
             'weight' => 'required',
             'temprature' => 'required',
@@ -115,6 +119,8 @@ class MenuController extends Controller
             'description' => $request->description,
             'image' => $image,
             'price' => $request->price,
+            'quantity' => $request->quantity,
+            'quantity_type' => $request->quantity_type,
             'weight' => $request->weight,
             'time' => $request->time,
             'temprature' => $request->temprature

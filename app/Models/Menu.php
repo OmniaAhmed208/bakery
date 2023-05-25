@@ -10,7 +10,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'description', 'image', 'weight', 'time', 'temprature'];
+    protected $fillable = ['name', 'price', 'quantity', 'quantity_type', 'description', 'image', 'weight', 'time', 'temprature'];
 
     public function categories(): BelongsToMany
     {

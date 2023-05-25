@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a class="navbar-brand d-flex justify-content-center align-items-center" href="{{ route('dashboard') }}">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center" href="/">
                         <img src="{{Storage::url('img/logo3.png')}}" class="img-fluid icon" alt=""> <span class="mx-4">Crustique</span>
                         {{-- <img src="img/logo3.png" class="img-fluid icon" alt=""> <span class="mx-4">Crustique</span> --}}
                     </a>
@@ -31,7 +31,7 @@
                                 <a class="nav-link" href="{{ route('reservations.step.one') }}">Make Order</a>
                             </li> --}}
                             <li>
-                                <a class="nav-link fs-5" href="{{ route('reservations.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <a class="nav-link fs-5" href="{{ route('orders.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             </li>
                         </ul>
                     </x-slot>
@@ -70,7 +70,7 @@
                       <a class="nav-link rounded" href="{{ route('menus.index') }}">Our Menu</a>
                     </li>
                     <li  class="nav-item">
-                        <a class="nav-link rounded fs-5" href="{{ route('reservations.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a class="nav-link rounded fs-5" href="{{ route('orders.addToCart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
                 </ul>
             </div>

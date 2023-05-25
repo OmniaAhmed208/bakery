@@ -49,7 +49,7 @@
       <section class="about text-center">
         <h2 class="h1 fw-bold">Our Heritage</h2>
         <p class="smallTitle fw-bold">boutiqe bread</p>
-        <p class="desc m-auto">
+        <p class="desc m-auto mt-4">
             "<span class="fw-bold">Crustique</span> is a name that can be understood as a blend of the words 'crust' and 'boutique'. 'Crust' refers to the outer layer of bread or any grilled food, while 'boutique' means a small and luxurious shop. Therefore, Crustique refers to a bakery that combines the quality of luxurious bread with the unique and stylish character of a small shop."
         </p>
       </section>
@@ -58,11 +58,11 @@
         <div class="container specials">
             <h2 class="h1 text-center fw-bold">Today's Speciality</h2>
             <p class="smallTitle fw-bold text-center">from our menu</p>
-            <div class="bread-menu d-flex justify-content-center">
+            <div class="bread-menu d-flex justify-content-center mt-5">
                 @foreach ($specials->menus as $menu)
                     <div class="content">
                         <div class="imgBox">
-                            <img src="img/sweetDinnerRolls.jpg" class="img-fluid" alt="">
+                            <img src="{{Storage::url($menu->image)}}" class="img-fluid" alt="">
                         </div>
                         <div class="title">
                             <h3 class="mt-4">{{$menu->name}}</h3>
@@ -84,22 +84,18 @@
                             <span class="degree">{{$menu->temprature}} &#8451</span>
                             </div>
                         </div>
-                        <form action="{{route('reservations.addMenuToCart')}}" method="POST" class="text-center">
+                        <form action="{{route('orders.addMenuToCart')}}" method="POST" class="text-center">
                             @csrf
                             <input type="hidden" value="{{$menu->id}}" name="menu_id">
                             <input type="hidden" value="{{$menu->price}}" name="price">
                             <input type="hidden" value="1" name="quantity">
-                            {{-- <label for="quantity" class="fw-bold fs-5">Quantity</label> --}}
-                            {{-- <input type="number" min="1" name="quantity" class="quantity" placeholder="1"> --}}
+                            <label for="quantity" class="fw-bold fs-5">Quantity</label>
+                            <input type="number" min="1" max="{{$menu->quantity}}" name="quantity" class="quantity" value="1">
+                            <span class="fw-bold fs-5">{{$menu->quantity_type}}</span>
                             <br>
                             <div class="btn">
                                 <button type="submit" class="btn text-black">Buy Now</button>
                             </div>
-                            {{-- <div class="d-flex align-items-center justify-content-center mt-4">
-                                <div class="btn">
-                                    <button class="btn text-black">Buy Now</button>
-                                </div>
-                            </div> --}}
                         </form>
                     </div>
                 @endforeach
@@ -107,7 +103,7 @@
         </div>
       <!-- ===================== bread recipes ============= -->
       <section class="bread-recipes">
-        <h2 class="h1 text-center">Bread Recipes</h2>
+        <h2 class="h1 text-center mt-5">Bread Recipes</h2>
         <p class="smallTitle fw-bold text-center">Testy&Quick Snacks</p>
         <div class="container mt-5">
           <div class="row">
@@ -144,20 +140,20 @@
                 <p class="smallTitle fw-bold mt-4">What do you need?</p>
                 <div class="d-flex">
                   <ul class="list-unstyled">
-                    <li class="fw-bold">1x</li>
-                    <li class="fw-bold">150g</li>
-                    <li class="fw-bold">100g</li>
-                    <li class="fw-bold">100g</li>
+                    <li class="fw-bold">Avacado pesto sandwish</li>
+                    <li class="fw-bold">Cheesy garlic bread</li>
+                    <li class="fw-bold">Pizza sandwish</li>
+                    <li class="fw-bold">Chocolate sandwish</li>
                   </ul>
                   <ul class="list-unstyled desc">
-                    <li>bagel</li>
-                    <li>bagel</li>
-                    <li>bagel</li>
-                    <li>bagel</li>
+                    <li>40 $</li>
+                    <li>35 $</li>
+                    <li>50 $</li>
+                    <li>35 $</li>
                   </ul>
                 </div>
                 <div class="btn mt-4 mb-2">
-                    <button class="btn text-black">Read More</button>
+                    <a href="{{route('categories.show', 6)}}" class="btn text-black">Show More</a>
                 </div>
               </div>
             </div>

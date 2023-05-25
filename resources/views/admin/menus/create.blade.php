@@ -34,6 +34,25 @@
                     @error('price')
                         <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
                     @enderror
+
+                    <div class="d-flex space-x-2">
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input class="form-control" type="number" min="1" id="quantity" name="quantity" placeholder="quantity">
+                        </div>
+                        @error('quantity')
+                            <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                        @enderror
+
+                        <div class="mb-3">
+                            <label for="quantity_type" class="form-label">Quantity type</label>
+                            <select id="quantity_type" name="quantity_type" class="w-100 rounded">
+                                <option value="Kilo">Kilo</option>
+                                <option value="Piece">Piece</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="d-flex space-x-2">
                         <div class="mb-3">
                             <label for="weight" class="form-label">Weight</label>

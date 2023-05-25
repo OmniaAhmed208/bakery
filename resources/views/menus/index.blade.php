@@ -10,7 +10,7 @@
 
                 @foreach($menus as $menu)
                     <div class="col-md-4">
-                        <div class="content">
+                        <div class="content mt-5">
                             <div class="imgBox">
                             <img src="{{Storage::url($menu->image)}}" class="img-fluid" alt="">
                             </div>
@@ -34,11 +34,14 @@
                                 <span class="degree">{{$menu->temprature}} &#8451</span>
                             </div>
                             </div>
-                            <form action="{{route('reservations.addMenuToCart')}}" method="POST" class="text-center">
+                            <form action="{{route('orders.addMenuToCart')}}" method="POST" class="text-center">
                                 @csrf
                                 <input type="hidden" value="{{$menu->id}}" name="menu_id">
                                 <input type="hidden" value="{{$menu->price}}" name="price">
                                 <input type="hidden" value="1" name="quantity">
+                                <label for="quantity" class="fw-bold fs-5">Quantity</label>
+                                <input type="number" min="1" max="{{$menu->quantity}}" name="quantity" class="quantity" value="1">
+                                <span class="fw-bold fs-5">{{$menu->quantity_type}}</span>
                                 <br>
                                 <div class="btn">
                                     <button type="submit" class="btn text-black">Buy Now</button>

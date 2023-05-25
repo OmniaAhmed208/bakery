@@ -16,6 +16,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Image</th>
                     <th scope="col">Price</th>
+                    <th scope="col">quantity</th>
                     <th scope="col">Weight</th>
                     <th scope="col">Time</th>
                     <th scope="col">Temprature</th>
@@ -27,8 +28,9 @@
                   @foreach ($menus as $menu)
                     <tr>
                         <td class="py-2 px-6">{{$menu->name}}</td>
-                        <td class="py-2 px-6 w-25"><img src="{{Storage::url($menu->image)}}" class="rounded" alt="menu"></td>
+                        <td class="py-2 px-6 w-20"><img src="{{Storage::url($menu->image)}}" class="rounded" alt="menu"></td>
                         <td class="py-2 px-6">{{$menu->price}} $</td>
+                        <td class="py-2 px-6">{{$menu->quantity}} {{$menu->quantity_type}}</td>
                         <td class="py-2 px-6">{{$menu->weight}} g</td>
                         <td class="py-2 px-6">{{$menu->time}} min</td>
                         <td class="py-2 px-6">{{$menu->temprature}} &#8451</td>

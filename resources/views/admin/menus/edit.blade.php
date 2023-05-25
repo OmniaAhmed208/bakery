@@ -38,6 +38,26 @@
                     @error('price')
                         <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
                     @enderror
+
+                    <div class="d-flex space-x-2">
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input class="form-control" type="number" min="1" id="quantity" name="quantity" value="{{$menu->quantity}}">
+                        </div>
+
+                        @error('quantity')
+                            <div class="text-sm text-red-400 mb-3">{{ $message }}</div>
+                        @enderror
+                        <div class="mb-3">
+                            <label for="quantity_type" class="form-label">Quantity type</label>
+                            <select id="quantity_type" name="quantity_type" class="rounded form-control">
+
+                                <option value="Kilo" @selected($menu->quantity_type == 'Kilo')>Kilo</option>
+                                <option value="Piece" @selected($menu->quantity_type == 'Piece')>Piece</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="weight" class="form-label">Weight (g)</label>
                         <input class="form-control @error('weight') is-invalid @enderror" type="text" id="weight" name="weight" value="{{$menu->weight}}">
